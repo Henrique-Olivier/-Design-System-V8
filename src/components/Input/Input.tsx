@@ -1,13 +1,17 @@
 import styled from "styled-components";
-import input_icon from "../assets/Input_Icon.svg";
-import input_icon_active from "../assets/Input_Icon_active.svg";
+import input_icon from "../../assets/Input_Icon.svg";
+import input_icon_active from "../../assets/Input_Icon_active.svg";
 
 type inputSize = "default" | "small";
 
 interface inputProps {
     size: inputSize;
-    label?: boolean;
-    error?: boolean;
+    placeholder: string;
+
+    textLabel?: string;
+
+    textError?: string;
+
     icon?: boolean;
     disabled?: boolean;
 }
@@ -36,7 +40,7 @@ const InputContainer = styled.div`
     }
 `;
 
-const InputComponent = styled.input<{ $size: string; $icon: boolean, $error:boolean; $disable: boolean }>`
+const InputComponent = styled.input<{ $size: string; $icon: boolean, $error?: string; $disable: boolean }>`
     width: 167px;
     height: ${props => props.$size === "default" ? "44px" : "36px"};
     border: ${props => props.$error ? "1px solid red" : "1px solid #E5E0EB"};
@@ -57,22 +61,22 @@ const InputComponent = styled.input<{ $size: string; $icon: boolean, $error:bool
     }
 `;
 
-function showLabel(show: boolean) {
-    return show ? <label htmlFor="text">Label</label> : null;
+function showLabel(textLabel: string | undefined) {
+    return textLabel ? <label htmlFor="text">{textLabel}</label> : null;
 };
 
-function showError(error: boolean) {
-    return error ? <p>Error Text</p> : null;
+function showError(textError: string | undefined) {
+    return textError ? <p>{textError}</p> : null;
 }
 
-function Input({ size, label=false, error=false, icon=false, disabled=false }: inputProps){
+function Input({ size, placeholder, textLabel, textError, icon=false, disabled=false }: inputProps){
     return(
         <InputContainer>
-            {showLabel(label)}
+            {showLabel(textLabel)}
             <div>
-                <InputComponent $size={size} $icon={icon} $error={error} placeholder="Text" disabled={disabled} $disable={disabled}/>
+                <InputComponent $size={size} $icon={icon} $error={textError} $disable={disabled} placeholder={placeholder} disabled={disabled} />
             </div>
-            {showError(error)}
+            {showError(textError)}
         </InputContainer>
     )
 }
