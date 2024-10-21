@@ -1,3 +1,5 @@
 export default function App () {
-    return <p>Olá mundo</p>
+  return (
+    <p>Hello Word</p>
+  )
   }
