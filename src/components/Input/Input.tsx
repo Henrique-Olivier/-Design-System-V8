@@ -1,13 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-type inputType = "text" | "number" | "password";
 type inputSize = "default" | "small";
 
-interface inputProps {
-    type: inputType;
-    size: inputSize;
-    placeholder: string;
+interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    inputSize: inputSize;
 
     textLabel?: string;
 
@@ -75,7 +72,7 @@ function showError(textError: string | undefined) {
     return textError ? <p>{textError}</p> : null;
 };
 
-function Input({ type, size, placeholder, textLabel, textError, icon, disabled=false }: inputProps){
+function Input({ type, inputSize, placeholder, textLabel, textError, icon, disabled=false }: CustomInputProps){
     const [isActive, setIsActive] = useState(false);
 
     return(
@@ -84,7 +81,7 @@ function Input({ type, size, placeholder, textLabel, textError, icon, disabled=f
             <div>
                 <InputComponent
                 type={type}
-                $size={size}
+                $size={inputSize}
                 $disable={disabled}
                 placeholder={placeholder}
                 disabled={disabled}
