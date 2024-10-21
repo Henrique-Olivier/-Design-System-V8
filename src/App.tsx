@@ -1,5 +1,7 @@
+import ProgressBar from "./components/Progress";
+
 export default function App () {
   return (
-    <p>Hello Word</p>
+    <ProgressBar percents={40} type='smallLine' style='default'/>
   )
   }

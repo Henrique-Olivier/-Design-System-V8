@@ -16,7 +16,7 @@ export const theme = {
       informing: {
         error: "#D51A52",
         attention: "#FF9500",
-        approval: "#008998",
+        approval: "#00B998",
         link: "#0F0BAB"
       }
 }
