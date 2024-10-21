@@ -56,14 +56,14 @@ const StyledProgress = styled.progress<{ $type: ProgressType, $style: StyleType 
         }
 `
 
-const CircularProgress = styled.div`
-            position: relative;
-            width: 120px;
-            height: 120px;
 
+const CircularProgress = styled.div<{ $type: ProgressType }>`
+            position: relative;
+            width: auto;
+            height: auto;
             circle {
             fill: none;
-            stroke-width: 8;
+            stroke-width: 6;
             stroke-linecap: round;
             }
             
@@ -100,20 +100,45 @@ const ProgressCircle = styled.circle<{ $percents: number }>`
 `
 
 export default function ProgressBar({ percents, type, style }: ProgressBarProps) {
-    return (
-        <StyledDiv>
-
+    if (type == 'line' || type == "smallLine") {
+        return <StyledDiv>
             <StyledProgress value={percents} max='100' $type={type} $style={style}></StyledProgress>
             {style == 'percent' && <p>{percents}%</p>}
             {style == 'complete' && <img src={LineComplete} />}
             {style == 'error' && <img src={LineError} />}
+        </StyledDiv>;
+    }
 
-            <CircularProgress>
-                <StyledSvg width="120" height="120" viewBox="0 0 120 120">
-                    <BgCircle cx="60" cy="60" r="45" />
-                    <ProgressCircle $percents={percents} cx="60" cy="60" r="45" />
-                </StyledSvg>
-            </CircularProgress>
-        </StyledDiv>
-    )
+    if (type == "smallCircle" ) {
+        return <CircularProgress $type={type}>
+            <StyledSvg width="120" height="120" viewBox="0 0 140 140">
+                <BgCircle cx="60" cy="60" r="45" />
+                <ProgressCircle $percents={percents} cx="60" cy="60" r="45" />
+            </StyledSvg>
+        </CircularProgress>
+    } 
+    if(type == "circle") {
+        return <CircularProgress $type={type}>
+        <StyledSvg width="140" height="140" viewBox="0 0 140 140">
+            <BgCircle cx="60" cy="60" r="45" />
+            <ProgressCircle $percents={percents} cx="60" cy="60" r="45" />
+        </StyledSvg>
+    </CircularProgress>
+    } 
+
+    // return (
+    //     <StyledDiv>
+    //         <StyledProgress value={percents} max='100' $type={type} $style={style}></StyledProgress>
+    //         {style == 'percent' && <p>{percents}%</p>}
+    //         {style == 'complete' && <img src={LineComplete} />}
+    //         {style == 'error' && <img src={LineError} />}
+
+    //         <CircularProgress $type={type}>
+    //             <StyledSvg width="120" height="120" viewBox="0 0 140 140">
+    //                 <BgCircle cx="70" cy="70" r="42"/>
+    //                 <ProgressCircle $percents={percents} cx="70" cy="70" r="42" />
+    //             </StyledSvg>
+    //         </CircularProgress>
+    //     </StyledDiv>
+    // )
 }
