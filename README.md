@@ -47,6 +47,7 @@ Aceita os seguintes valores:
 
 Caso o botão precise de um ícone, o caminho de um SVG deve ser passado. Certifique-se de que o ícone seja um SVG, pois é o formato suportado para garantir melhor renderização e flexibilidade visual.
 
+
 **Componente Typography**
 O componente Typography é um componente que possui estilização para: tags heading(H1, H2, H3, H4) para desktop, tablet e mobile; e a tag paragraph(p) para main text.
 
@@ -77,3 +78,32 @@ Aceita os seguintes valores:
 - children (obrigatório):
 
 O conteúdo do typography, sendo o texto que será exibido dentro dele.
+
+**Componente Progress**
+
+O Componente Progress é uma barra de progresso versátil, com dois estilos principais: circular e em barra.
+
+Para utiliza-lo deverá ser chamado a tag \<ProgressBar> Com o fechamento\<ProgressBar/>. 
+O componente esperá as seguintes props: 
+
+- Percents (Obrigatório):   
+ Se trata da porcentagem da barra de progresso, numeros inteiros de 0 a 100.
+
+- type (Opcional):
+ Determina o formato de exibição da barra de progresso, que pode ser uma barra ou um círculo. Os valores aceitos são:
+
+ 1. 'line' (Padrão)
+ 2. 'smallLine' 
+ 3. 'circle'
+ 4. 'smallCircle
+
+- style (Opcional)
+Define o estilo visual do progresso. Os valores aceitos são: 
+
+1. 'default' (Padrão)
+2. 'percent'
+3. 'complete'
+4. 'error'
+
+OBS: importante ressaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular são fixados em 84px e 140px.
+
