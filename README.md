@@ -47,3 +47,30 @@ Aceita os seguintes valores:
 
 Caso o botão precise de um ícone, o caminho de um SVG deve ser passado. Certifique-se de que o ícone seja um SVG, pois é o formato suportado para garantir melhor renderização e flexibilidade visual.
 
+**Componente Progress**
+
+O Componente Progress é uma barra de progresso versátil, com dois estilos principais: circular e em barra.
+
+Para utiliza-lo deverá ser chamado a tag \<ProgressBar> Com o fechamento\<ProgressBar/>. 
+O componente esperá as seguintes props: 
+
+- Percents (Obrigatório):   
+ Se trata da porcentagem da barra de progresso, numeros inteiros de 0 a 100.
+
+- type (Opcional):
+ Determina o formato de exibição da barra de progresso, que pode ser uma barra ou um círculo. Os valores aceitos são:
+
+ 1. 'line' (Padrão)
+ 2. 'smallLine' 
+ 3. 'circle'
+ 4. 'smallCircle
+
+- style (Opcional)
+Define o estilo visual do progresso. Os valores aceitos são: 
+
+1. 'default' (Padrão)
+2. 'percent'
+3. 'complete'
+4. 'error'
+
+OBS: importante ressaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular são fixados em 84px e 140px.
