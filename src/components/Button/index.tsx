@@ -5,16 +5,16 @@ import React from "react";
 type typeBtn = 'main' | 'secondary' | 'text' | 'link';
 type typeSize = 'large' | 'medium' | 'small';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     children: React.ReactNode
-    type: typeBtn;
+    BtnStyle: typeBtn;
     size: typeSize;
-    icon?: any;
+    icon?: string;
 }
 
 
-function setColors(type: typeBtn): string {
-    switch (type) {
+function setColors(BtnStyle: typeBtn): string {
+    switch (BtnStyle) {
         case 'main': return `
         background-color: ${theme.corporate.purple}; 
         color: ${theme.grayscale.white}; 
@@ -73,22 +73,22 @@ function setColors(type: typeBtn): string {
     }
 }
 
-function getPadding(size: typeSize, type: typeBtn): string {
+function getPadding(size: typeSize, BtnStyle: typeBtn): string {
     const padding = {
         'large': "12px 52px",
         'medium': "8px 28px",
         'small': "4px 11px"
     };
 
-    if (type == "text" || type == "link") {
+    if (BtnStyle == "text" || BtnStyle == "link") {
         return '0'; 
     } 
 
     return padding[size];
 }
 
-function setHoverForChild(type: typeBtn) {
-    switch (type) {
+function setHoverForChild(BtnStyle: typeBtn) {
+    switch (BtnStyle) {
         case 'secondary': return `
 
             &:hover div{
@@ -121,9 +121,9 @@ function setHoverForChild(type: typeBtn) {
     }
 } 
 
-const StyledBtn = styled.button<{ $size: typeSize, $type: typeBtn }>`
-    ${props => setColors(props.$type)};
-    padding: ${props => getPadding(props.$size, props.$type)}; 
+const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn }>`
+    ${props => setColors(props.$BtnStyle)};
+    padding: ${props => getPadding(props.$size, props.$BtnStyle)}; 
     border-radius: 4px;
     display: flex;
     gap: 8px;
@@ -135,19 +135,19 @@ const StyledBtn = styled.button<{ $size: typeSize, $type: typeBtn }>`
     height: 18px;
     }
 
-    ${props => setHoverForChild(props.$type)}
+    ${props => setHoverForChild(props.$BtnStyle)}
 `
 
-const Icon = styled.div<{$src: string, $type: typeBtn}>`
+const Icon = styled.div<{$src: string, $BtnStyle: typeBtn}>`
   width: 18px;
   height: 18px;
   mask: url(${props => props.$src}) no-repeat center;
   mask-size: contain;
-  ${props => setIconColors(props.$type) }; 
+  ${props => setIconColors(props.$BtnStyle) }; 
 `;
 
-function setIconColors(type: typeBtn): string { 
-    switch (type) {
+function setIconColors(BtnStyle: typeBtn): string { 
+    switch (BtnStyle) {
         case 'main': return `
         background-color: ${theme.grayscale.white}; 
         `;
@@ -164,10 +164,10 @@ function setIconColors(type: typeBtn): string {
     }
 }
 
-export default function Button({ children, type, size, icon }: ButtonProps) {
+export default function Button({ children, BtnStyle, size, icon }: ButtonProps) {
     return (
-        <StyledBtn $size={size} $type={type}>
-            {icon && <Icon $src={icon} $type={type}/>}
+        <StyledBtn $size={size} $BtnStyle={BtnStyle}>
+            {icon && <Icon $src={icon} $BtnStyle={BtnStyle}/>}
             {children}
         </StyledBtn>
 
