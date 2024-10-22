@@ -1,7 +1,5 @@
-import ProgressBar from "./components/Progress";
-
 export default function App () {
   return (
-    <ProgressBar percents={45} />
+    <h1>Hello word</h1>
   )
   }
