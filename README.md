@@ -1,4 +1,17 @@
 # -Design-System-V8
+**Componente Input Personalizável**
+Este componente de input permite uma estilização flexível e aceita as seguintes propriedades:
+
+Propriedades Obrigatórias:
+- inputSize: Especifica o tamanho do input, podendo ser 'default' ou 'small'.
+
+Propriedades Opcionais:
+
+- textLabel: Um rótulo que pode ser adicionado acima do input para descrever seu propósito.
+- textError: Uma mensagem de erro que aparece abaixo do input, útil para validações.
+- disabled: Um booleano que determina se o input deve estar desabilitado.
+- icon: Um ícone que pode ser exibido dentro do campo de input, oferecendo uma indicação visual.
+OBS: O caminho de um SVG deve ser passado. Certifique-se de que o ícone seja um SVG, pois é o formato suportado para garantir melhor renderização e flexibilidade visual.
 
 **componente  Button**
 O componente Button é um botão versátil com diversas variações de estilo, incluindo: main, secondary, text, e link.
@@ -44,7 +57,7 @@ O componente esperá as seguintes props:
 - Percents (Obrigatório):   
  Se trata da porcentagem da barra de progresso, numeros inteiros de 0 a 100.
 
-- type (Opicional):
+- type (Opcional):
  Determina o formato de exibição da barra de progresso, que pode ser uma barra ou um círculo. Os valores aceitos são:
 
  1. 'line' (Padrão)
@@ -60,4 +73,4 @@ Define o estilo visual do progresso. Os valores aceitos são:
 3. 'complete'
 4. 'error'
 
-OBS: importe resaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular tem são fixados em 84px e 140px.
+OBS: importante ressaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular são fixados em 84px e 140px.
