@@ -1,5 +1,13 @@
+import { useState } from "react";
+import Modal from "./components/Modal";
+
 export default function App () {
+
   return (
-    <h1>Hello word</h1>
+    <>
+    <Modal show={isModalVisible}/>
+    </>
+
+    
   )
   }
