@@ -47,3 +47,33 @@ Aceita os seguintes valores:
 
 Caso o botão precise de um ícone, o caminho de um SVG deve ser passado. Certifique-se de que o ícone seja um SVG, pois é o formato suportado para garantir melhor renderização e flexibilidade visual.
 
+**Componente Typography**
+O componente Typography é um componente que possui estilização para: tags heading(H1, H2, H3, H4) para desktop, tablet e mobile; e a tag paragraph(p) para main text.
+
+Para utilizá-lo, basta chamar a tag \<Typography> com o fechamento apropriado \<Typography/>. Ele espera as seguintes props:
+
+- size (obrigatório):
+
+Aceita os seguintes valores:
+1. 'desktop', Usado com heading.
+2. 'tablet', Usado com heading.
+3. 'mobile', Usado com heading.
+4. 'main', Usado com paragraph.
+
+- tag (obrigatório):
+Aceita os seguintes valores:
+1. 'H1', Usado com o size desktop, tablet ou mobile.
+2. 'H2', Usado com o size desktop, tablet ou mobile.
+3. 'H3', Usado com o size desktop, tablet ou mobile.
+4. 'H4', Usado com o size desktop, tablet ou mobile.
+
+5. 'body-L', usado com o size main.
+6. 'body-M-reguar', usado com o size main.
+7. 'body-M', usado com o size main.
+8. 'body-S', usado com o size main.
+9. 'body-S-regular', usado com o size main.
+10. 'body-XS', usado com o size main.
+
+- children (obrigatório):
+
+O conteúdo do typography, sendo o texto que será exibido dentro dele.
