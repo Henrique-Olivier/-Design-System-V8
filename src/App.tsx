@@ -11,7 +11,7 @@ export default function App () {
   return (
     <>  
     <Teste>
-      <Avatar />
+      <Avatar type="initials" initial="HO" fontSize="32px"/>
     </Teste>
     </>
   )
