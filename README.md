@@ -155,6 +155,41 @@ componente pai
 
 Essa prop espera uma função, que será associada tanto ao botão de fechar quanto ao overlay. Ao serem clicados, o modal será fechado. É interessante que essa função controle o state passado na prop "isVisible".
 
+
+ **Componente Avatar**
+
+ O componente avatar é uma forma facil de representar um usuario, contento alguns tipo, diferenciando o conteudo dentro dele podendo ser uma imagem padrão, personalizada ou a inicial que for definida
+
+OBS: o componente não tem largura nem altura definida, devendo ser controlado por uma elemento pai. 
+
+ Para utiliza-lo deverá ser chamado a tag \<Modal />  
+O componente esperá as seguintes props: 
+
+- type: (Obrigatório)
+É refente ao que será exibido dentro do avatar
+1. 'default' - Será exibido um icone padrão 
+2. 'picture' - Será exibido uma imagem personalizada. No caso dessa prop ser passada, é necessario passar um caminho na prop 'img'
+3. 'initials' - Será exibido as iniciais informadas. No caso dessa prop ser passada, é necessario passar as iniciais via a prop 'inital'
+
+- Color: (Opcional)
+Define a cor que vai ser mostrada no icone: 
+  1. "default"
+  2. "purpleGradient"
+  3. "lightPurpleGradient"
+  4. "greenGradient"
+  5. "pinkGradient"
+  6. "orangeGradient"
+
+- initial: (Opcional)
+é necessario apenas no " type: 'initials' ", será a inicial mostrada.
+
+- fontSize: (Opcional)
+é o tamanho da fonte da initial, o tamanho padrão é de 16px. Deve ser passado como -> ex: '32px'
+
+- img: (Opicional)
+é necessario apenas no " type: 'picture' ", será a imagem mostrada.
+
+
 **Componente Empty**
 
 O componente empty é um componente onde mostra um empty state, podendo ser personalizavel.
@@ -167,5 +202,5 @@ O componente esperá as seguintes props:
 Onde é definido o icone do empty state.
 
 - children (opcional):
-
+- 
 É o conteudo que sera mostrado logo abaixo do icone do empty state.
