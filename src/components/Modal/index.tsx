@@ -1,27 +1,33 @@
 import styled from "styled-components"
 import { theme } from "../colors/colorts"
 import CloseIcon from './assets/close.svg'
-import Typography from "../Typography/typography"
-import { useState } from "react"
+import React from "react"
 
 interface ModalProps {
+    children: React.ReactNode;
     isVisible: boolean;
+    onClose: () => void;
 } 
 
 
 const Overlay = styled.div`
-    background-color: rgba(0,0,0, 0.5); 
+    background-color: rgba(26,20,31, 0.7); 
     width: 100vw; 
     height: 100vh; 
-    z-index: 9999; 
+    z-index: 9998; 
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-`
+    `
 const Container = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
     box-sizing: border-box;
     background-color: ${theme.grayscale.white}; 
     width: 460px;
@@ -51,25 +57,24 @@ const CloseButton = styled.button`
     cursor: pointer; 
 `
 
-export default function Modal({isVisible} : ModalProps) {
+
+
+export default function Modal({children, isVisible, onClose} : ModalProps) {
 
     if(!isVisible) return null;
 
     return (
-        <Overlay>
+        <>
+        <Overlay onClick={onClose}>
+        </Overlay>
             <Container>
-                <CloseButton>
+                <CloseButton onClick={onClose}>
                 <img src={CloseIcon}/>
                 </CloseButton>
                 <ContainerContent>
-                    <Typography size="desktop" tag="H2">
-                        Congratulations! 
-                    </Typography>
-                    <Typography size="main" tag="body-M">
-                        Descripition of congratulations
-                    </ Typography>
+                    {children}
                 </ContainerContent>
             </Container>
-        </Overlay>
+        </>
     )
 }
