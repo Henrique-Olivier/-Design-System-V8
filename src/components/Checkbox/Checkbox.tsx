@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import { theme } from "../colors/colorts";
+import checked from "../../assets/checked.svg";
+import undefined from "../../assets/Undefined.svg";
 
 type checkboxType = "default" | "disabled" | "error";
 type checkboxState = "empty" | "checked" | "undefined";
@@ -52,19 +54,23 @@ const stateCheckboxMapping = {
 
 const InputElement = styled.input<{ $state: checkboxState, $type: checkboxType }>`
     display: none;
-
-    +label:after{
+    /* +label:after{
         ${props => props.$state === "empty" ? stateCheckboxMapping["empty"] : props.$state === "checked" ? stateCheckboxMapping["checked"]["after"] : stateCheckboxMapping["undefined"]}
         background-color: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.border : theme.informing.error};
-    }
+        }
+        
+        +label:before {
+            ${props => props.$state === "checked" ? stateCheckboxMapping["checked"]["before"] : null};
+            background-color: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.border : theme.informing.error};
+            } */
+            `;
 
-    +label:before {
-        ${props => props.$state === "checked" ? stateCheckboxMapping["checked"]["before"] : null};
-        background-color: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.border : theme.informing.error};
-    }
-`;
-
-const LabelElement = styled.label<{ $type: checkboxType }>`
+const LabelElement = styled.label<{ $type: checkboxType, $state: checkboxState }>`
+    mask: ${props => props.$state === "empty" ? null : props.$state === "checked" ? `url(${checked})` : `url(${undefined})`};
+    mask-repeat: no-repeat;
+    mask-position: center;
+    /* background-repeat: no-repeat;
+    background-position: center; */
     display: block;
     width: 18px;
     height: 18px;
@@ -76,11 +82,11 @@ const LabelElement = styled.label<{ $type: checkboxType }>`
     background-color: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.disabled : '#E8A1B6'};
 `;
 
-function Checkbox({ type, state }: CheckboxProps){
+function Checkbox({ type, state, ...props }: CheckboxProps){
     return(
-        <Container>
+        <Container {...props}>
             <InputElement $type={type} $state={state} id="checkbox" />
-            <LabelElement $type={type} htmlFor="checkbox"></LabelElement>
+            <LabelElement $type={type} $state={state} htmlFor="checkbox"></LabelElement>
         </Container>
     );
 }
