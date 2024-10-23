@@ -129,6 +129,7 @@ const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn }>`
     gap: 8px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     img {
     width: 18px;
@@ -164,9 +165,9 @@ function setIconColors(BtnStyle: typeBtn): string {
     }
 }
 
-export default function Button({ children, BtnStyle, size, icon }: ButtonProps) {
+export default function Button({ children, BtnStyle, size, icon, ...props }: ButtonProps) {
     return (
-        <StyledBtn $size={size} $BtnStyle={BtnStyle}>
+        <StyledBtn $size={size} $BtnStyle={BtnStyle} {...props}>
             {icon && <Icon $src={icon} $BtnStyle={BtnStyle}/>}
             {children}
         </StyledBtn>
