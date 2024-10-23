@@ -75,11 +75,11 @@ function showError(textError: string | undefined) {
     return textError ? <p>{textError}</p> : null;
 };
 
-function Input({ type, inputSize, placeholder, textLabel, textError, icon, disabled=false }: CustomInputProps){
+function Input({ type, inputSize, placeholder, textLabel, textError, icon, disabled=false, ...props }: CustomInputProps){
     const [isActive, setIsActive] = useState(false);
 
     return(
-        <InputContainer $error={textError} $disable={disabled} $isActive={isActive}>
+        <InputContainer $error={textError} $disable={disabled} $isActive={isActive} {...props}>
             {showLabel(textLabel)}
             <div>
                 <InputComponent
