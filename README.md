@@ -155,4 +155,17 @@ componente pai
 
 Essa prop espera uma função, que será associada tanto ao botão de fechar quanto ao overlay. Ao serem clicados, o modal será fechado. É interessante que essa função controle o state passado na prop "isVisible".
 
+**Componente Empty**
 
+O componente empty é um componente onde mostra um empty state, podendo ser personalizavel.
+
+Para utiliza-lo deverá ser chamado a tag \<Empty> Com o fechamento\<Empty/>. 
+O componente esperá as seguintes props:
+
+- iconEmpty (Obrigatório):
+
+Onde é definido o icone do empty state.
+
+- children (opcional):
+
+É o conteudo que sera mostrado logo abaixo do icone do empty state.
