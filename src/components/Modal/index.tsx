@@ -45,10 +45,7 @@ const Container = styled.div`
 const ContainerContent = styled.div`
     padding: 20px 36px; 
     width: 100%;  
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 12px; 
+    text-align: start;
 `
 
 const CloseButton = styled.button`
