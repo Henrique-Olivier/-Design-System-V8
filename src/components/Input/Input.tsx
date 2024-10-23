@@ -79,7 +79,7 @@ function Input({ type, inputSize, placeholder, textLabel, textError, icon, disab
     const [isActive, setIsActive] = useState(false);
 
     return(
-        <InputContainer $error={textError} $disable={disabled} $isActive={isActive} {...props}>
+        <InputContainer $error={textError} $disable={disabled} $isActive={isActive}>
             {showLabel(textLabel)}
             <div>
                 <InputComponent
@@ -89,6 +89,7 @@ function Input({ type, inputSize, placeholder, textLabel, textError, icon, disab
                 disabled={disabled}
                 onFocus={() => setIsActive(!isActive)}
                 onBlur={() => setIsActive(!isActive)}
+                {...props}
                 />
 
                 <Icon $src={icon} $disable={disabled} />
