@@ -1,5 +1,6 @@
 # -Design-System-V8
 **Componente Input Personalizável**
+
 Este componente de input permite uma estilização flexível e aceita as seguintes propriedades:
 
 Propriedades Obrigatórias:
@@ -14,6 +15,7 @@ Propriedades Opcionais:
 OBS: O caminho de um SVG deve ser passado. Certifique-se de que o ícone seja um SVG, pois é o formato suportado para garantir melhor renderização e flexibilidade visual.
 
 **componente  Button**
+
 O componente Button é um botão versátil com diversas variações de estilo, incluindo: main, secondary, text, e link.
 
 Para utilizá-lo, basta chamar a tag \<Button> com o fechamento apropriado \<Button/>. Ele espera as seguintes props:
@@ -49,6 +51,7 @@ Caso o botão precise de um ícone, o caminho de um SVG deve ser passado. Certif
 
 
 **Componente Typography**
+
 O componente Typography é um componente que possui estilização para: tags heading(H1, H2, H3, H4) para desktop, tablet e mobile; e a tag paragraph(p) para main text.
 
 Para utilizá-lo, basta chamar a tag \<Typography> com o fechamento apropriado \<Typography/>. Ele espera as seguintes props:
@@ -69,7 +72,7 @@ Aceita os seguintes valores:
 4. 'H4', Usado com o size desktop, tablet ou mobile.
 
 5. 'body-L', usado com o size main.
-6. 'body-M-reguar', usado com o size main.
+6. 'body-M-regular', usado com o size main.
 7. 'body-M', usado com o size main.
 8. 'body-S', usado com o size main.
 9. 'body-S-regular', usado com o size main.
@@ -107,3 +110,23 @@ Define o estilo visual do progresso. Os valores aceitos são:
 
 OBS: importante ressaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular são fixados em 84px e 140px.
 
+**Componente Checkbox**
+
+O Componente Checkbox é um input que pode ser personalizado com três tipos e três estados diferentes, onde podem ser combinados de diferentes formas
+
+Para utiliza-lo deverá ser chamado a tag com auto fechamento \<Checkbox/>.
+O componente esperá as seguintes props:
+
+- type (Obrigatório):
+Determina a estilização do Checkbox:
+
+1. default
+2. disabled
+3. error
+
+- state (Obrigatório):
+Determina o checked(tick) do checkbox:
+
+1. empty
+2. checked
+3. undefined
