@@ -110,6 +110,7 @@ Define o estilo visual do progresso. Os valores aceitos são:
 
 OBS: importante ressaltar que os estilos em barra não tem width fixo, então é importante controlar com um componente pai. Já por outro lado os estilos circular são fixados em 84px e 140px.
 
+
 **Componente Checkbox**
 
 O Componente Checkbox é um input que pode ser personalizado com três tipos e três estados diferentes, onde podem ser combinados de diferentes formas
@@ -130,3 +131,28 @@ Determina o checked(tick) do checkbox:
 1. empty
 2. checked
 3. undefined
+
+**Componente Modal**
+
+O componente modal é um alerta flexivel, que pode ser completamente modificado conforme o contexto 
+em que ele está inserido. 
+
+Para utiliza-lo deverá ser chamado a tag \<Modal> Com o fechamento\<Modal/>. 
+O componente esperá as seguintes props: 
+
+- Children: (Obrigatório)
+é o conteudo que está dentro do modal, por padrão o modal está sempre vazio, possuindo apenas o botão 
+de fechar. 
+
+-isVisible: (Obrigatório)
+
+é uma prop booleana, é o que controla sua visibilidade, sendo assim se o modal for criado com true ele 
+será visivel assim que a página for carregada, do contrário ele não irá aparecer. 
+é interessante que nessa prop seja passada um state, para que ele seja controlado de forma externa, pelo 
+componente pai 
+
+-onClose: (Obrigatório)
+
+Essa prop espera uma função, que será associada tanto ao botão de fechar quanto ao overlay. Ao serem clicados, o modal será fechado. É interessante que essa função controle o state passado na prop "isVisible".
+
+
