@@ -6,6 +6,8 @@ Este componente de input permite uma estilização flexível e aceita as seguint
 Propriedades Obrigatórias:
 - inputSize: Especifica o tamanho do input, podendo ser 'default' ou 'small'.
 
+- placeholder: fornece uma dica do valor esperado no campo do input.
+
 Propriedades Opcionais:
 
 - textLabel: Um rótulo que pode ser adicionado acima do input para descrever seu propósito.
