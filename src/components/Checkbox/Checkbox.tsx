@@ -1,38 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../colors/colorts";
-
-type checkboxType = "default" | "disabled" | "error";
-type checkboxState = "empty" | "checked" | "undefined";
-interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    type: checkboxType;
-    state: checkboxState;
-}
-
-const Container = styled.div`
-    display: flex;
-    gap: 5px;
-`;
-
-const InputElement = styled.input`
-    display: none;
-`;
-
-const LabelElement = styled.label<{ $type: checkboxType, $state: checkboxState }>`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 1px solid ${props => props.$type === "default" ? theme.grayscale.spacer : props.$type === "disabled" ? theme.grayscale.border : theme.informing.error};
-    position: relative;
-    cursor: pointer;
-    background-color: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.disabled : '#E8A1B6'};
-
-    svg path{
-        fill: ${props => props.$type === "default" ? null : props.$type === "disabled" ? theme.grayscale.border : theme.informing.error}
-    }
-`;
+import * as S from "./style";
+import { CheckboxProps } from "./types";
 
 function CheckedIcon() {
     return (
@@ -70,14 +37,14 @@ function UndefinedIcon() {
         <path fill="#9D3FE7" d="M0 0H10V2H0z"></path>
       </svg>
     );
-  }
+}
 
-function Checkbox({ type, state, ...props }: CheckboxProps){
+function Checkbox({ type="default", ...props }: CheckboxProps){
     return(
-        <Container {...props}>
-            <InputElement id="checkbox" />
-            <LabelElement $type={type} $state={state} htmlFor="checkbox">{state === "empty" ? null : state === "checked" ? <CheckedIcon/> : <UndefinedIcon/>}</LabelElement>
-        </Container>
+        <S.Container>
+            <S.InputElement id="checkbox" {...props}/>
+            <S.LabelElement htmlFor="checkbox">{type === "default" ? <CheckedIcon/> : <UndefinedIcon/>}</S.LabelElement>
+        </S.Container>
     );
 }
 
