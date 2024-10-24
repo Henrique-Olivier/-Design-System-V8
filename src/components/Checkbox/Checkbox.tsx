@@ -3,6 +3,7 @@ import { theme } from "../colors/colorts";
 
 type checkboxType = "default" | "disabled" | "error";
 type checkboxState = "empty" | "checked" | "undefined";
+
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     type: checkboxType;
     state: checkboxState;

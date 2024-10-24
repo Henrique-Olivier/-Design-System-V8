@@ -1,21 +1,24 @@
 import styled from "styled-components";
 import ProgressBar from "./components/Progress";
 
-
-const Teste = styled.div`
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  border: 1px solid #f1f1f1;
+const Container = styled.div`
+  width: 90vw; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
 `
 
 export default function App () {
-
   return (
     <>  
-    <Teste>
-      <ProgressBar percents={49} style="percent" type="circle"/>
-    </Teste>
+    <Container>
+      <div>
+        <ProgressBar percents={50} style="complete" type="line"/>
+      </div>
+    </Container>
     </>
   )
-  }
+}
