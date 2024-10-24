@@ -27,6 +27,10 @@ export const OlListWrapper = styled.ol`
     }
 
     div.marked{
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
         margin-right: 12px;
         color: ${theme.corporate.purple};
     }
