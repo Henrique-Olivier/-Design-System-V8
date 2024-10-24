@@ -10,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     BtnStyle: typeBtn;
     size: typeSize;
     icon?: string;
+    disabled?: boolean;
 }
 
 
@@ -27,6 +28,10 @@ function setColors(BtnStyle: typeBtn): string {
              &:active {   
             background-color: #6A17AB ;
             }
+
+            &:disabled {
+            background-color: ${theme.grayscale.disabled};
+            } 
         `;
         case 'secondary': return `
         background-color: ${theme.grayscale.white};
@@ -41,6 +46,11 @@ function setColors(BtnStyle: typeBtn): string {
             border: 1px solid #6A17AB ;
             color: #6A17AB ;
             }
+
+             &:disabled {   
+            border: 1px solid ${theme.grayscale.disabled} ;
+            color:  ${theme.grayscale.disabled}  ;
+            }
         `;
         case 'text': return `
         background-color: transparent;
@@ -52,6 +62,10 @@ function setColors(BtnStyle: typeBtn): string {
         
              &:active {   
             color: #6A17AB ;
+            }
+
+            &:disabled {
+            color: ${theme.grayscale.disabled};
             }
         `;
         case 'link': return `
@@ -87,7 +101,9 @@ function getPadding(size: typeSize, BtnStyle: typeBtn): string {
     return padding[size];
 }
 
-function setHoverForChild(BtnStyle: typeBtn) {
+function setHoverForChild(BtnStyle: typeBtn, isDisabled: boolean) {
+    if (isDisabled) return;
+
     switch (BtnStyle) {
         case 'secondary': return `
 
@@ -121,7 +137,14 @@ function setHoverForChild(BtnStyle: typeBtn) {
     }
 } 
 
-const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn }>`
+const disabledColorMap = {
+    'main': theme.grayscale.white,
+    'secondary': theme.grayscale.disabled,
+    'text': theme.grayscale.disabled,
+    'link': theme.grayscale.white
+} 
+
+const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn, $disabled: boolean }>`
     ${props => setColors(props.$BtnStyle)};
     padding: ${props => getPadding(props.$size, props.$BtnStyle)}; 
     border-radius: 4px;
@@ -136,7 +159,11 @@ const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn }>`
     height: 18px;
     }
 
-    ${props => setHoverForChild(props.$BtnStyle)}
+    &:disabled div{
+    background-color:  ${props => disabledColorMap[props.$BtnStyle]} ;
+    }
+    
+    ${props => setHoverForChild(props.$BtnStyle, props.$disabled)}
 `
 
 const Icon = styled.div<{$src: string, $BtnStyle: typeBtn}>`
@@ -165,9 +192,9 @@ function setIconColors(BtnStyle: typeBtn): string {
     }
 }
 
-export default function Button({ children, BtnStyle, size, icon, ...props }: ButtonProps) {
+export default function Button({ children, BtnStyle, size, icon, disabled = false, ...props }: ButtonProps) {
     return (
-        <StyledBtn $size={size} $BtnStyle={BtnStyle} {...props}>
+        <StyledBtn $size={size} $BtnStyle={BtnStyle} $disabled={disabled} disabled={disabled} {...props}>
             {icon && <Icon $src={icon} $BtnStyle={BtnStyle}/>}
             {children}
         </StyledBtn>
