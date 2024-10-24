@@ -2,20 +2,20 @@ import styled from "styled-components";
 import { theme } from "../colors/colorts";
 import React from "react";
 
-type typeBtn = 'main' | 'secondary' | 'text' | 'link';
+type typeVariant = 'main' | 'secondary' | 'text' | 'link';
 type typeSize = 'large' | 'medium' | 'small';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     children: React.ReactNode
-    BtnStyle: typeBtn;
+    variant: typeVariant;
     size: typeSize;
     icon?: string;
     disabled?: boolean;
 }
 
 
-function setColors(BtnStyle: typeBtn): string {
-    switch (BtnStyle) {
+function setColors(variant: typeVariant): string {
+    switch (variant) {
         case 'main': return `
         background-color: ${theme.corporate.purple}; 
         color: ${theme.grayscale.white}; 
@@ -87,24 +87,24 @@ function setColors(BtnStyle: typeBtn): string {
     }
 }
 
-function getPadding(size: typeSize, BtnStyle: typeBtn): string {
+function getPadding(size: typeSize, variant: typeVariant): string {
     const padding = {
         'large': "12px 52px",
         'medium': "8px 28px",
         'small': "4px 11px"
     };
 
-    if (BtnStyle == "text" || BtnStyle == "link") {
+    if (variant == "text" || variant == "link") {
         return '0'; 
     } 
 
     return padding[size];
 }
 
-function setHoverForChild(BtnStyle: typeBtn, isDisabled: boolean) {
+function setHoverForChild(variant: typeVariant, isDisabled: boolean) {
     if (isDisabled) return;
 
-    switch (BtnStyle) {
+    switch (variant) {
         case 'secondary': return `
 
             &:hover div{
@@ -144,9 +144,9 @@ const disabledColorMap = {
     'link': theme.grayscale.white
 } 
 
-const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn, $disabled: boolean }>`
-    ${props => setColors(props.$BtnStyle)};
-    padding: ${props => getPadding(props.$size, props.$BtnStyle)}; 
+const StyledBtn = styled.button<{ $size: typeSize, $variant: typeVariant, $disabled: boolean }>`
+    ${props => setColors(props.$variant)};
+    padding: ${props => getPadding(props.$size, props.$variant)}; 
     border-radius: 4px;
     display: flex;
     gap: 8px;
@@ -160,22 +160,22 @@ const StyledBtn = styled.button<{ $size: typeSize, $BtnStyle: typeBtn, $disabled
     }
 
     &:disabled div{
-    background-color:  ${props => disabledColorMap[props.$BtnStyle]} ;
+    background-color:  ${props => disabledColorMap[props.$variant]} ;
     }
     
-    ${props => setHoverForChild(props.$BtnStyle, props.$disabled)}
+    ${props => setHoverForChild(props.$variant, props.$disabled)}
 `
 
-const Icon = styled.div<{$src: string, $BtnStyle: typeBtn}>`
+const Icon = styled.div<{$src: string, $variant: typeVariant}>`
   width: 18px;
   height: 18px;
   mask: url(${props => props.$src}) no-repeat center;
   mask-size: contain;
-  ${props => setIconColors(props.$BtnStyle) }; 
+  ${props => setIconColors(props.$variant) }; 
 `;
 
-function setIconColors(BtnStyle: typeBtn): string { 
-    switch (BtnStyle) {
+function setIconColors(variant: typeVariant): string { 
+    switch (variant) {
         case 'main': return `
         background-color: ${theme.grayscale.white}; 
         `;
@@ -192,10 +192,10 @@ function setIconColors(BtnStyle: typeBtn): string {
     }
 }
 
-export default function Button({ children, BtnStyle, size, icon, disabled = false, ...props }: ButtonProps) {
+export default function Button({ children, variant, size, icon, disabled = false, ...props }: ButtonProps) {
     return (
-        <StyledBtn $size={size} $BtnStyle={BtnStyle} $disabled={disabled} disabled={disabled} {...props}>
-            {icon && <Icon $src={icon} $BtnStyle={BtnStyle}/>}
+        <StyledBtn $size={size} $variant={variant} $disabled={disabled} disabled={disabled} {...props}>
+            {icon && <Icon $src={icon} $variant={variant}/>}
             {children}
         </StyledBtn>
 
