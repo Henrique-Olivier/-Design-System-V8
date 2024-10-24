@@ -206,3 +206,15 @@ Onde é definido o icone do empty state.
 - children (opcional):
 - 
 É o conteudo que sera mostrado logo abaixo do icone do empty state.
+
+**Componente List**
+
+O Componente List mostra uma lista personalizada de itens.
+
+Para utiliza-lo deverá ser chamado a tag \<List> Com o fechamento\<List/>. 
+O componente esperá as seguintes props:
+
+- style (Obrigratório):
+Define o estilo da lista:
+1. 'marked': mostra uma lista não ordenada
+2. 'numbered': mostra uma lista ordenada
