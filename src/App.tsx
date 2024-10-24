@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Avatar from "./components/Avatar";
 
+
 const Teste = styled.div`
   width: 100px;
   height: 100px;
