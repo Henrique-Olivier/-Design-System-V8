@@ -1,7 +1,7 @@
-type inputSize = "default" | "small";
+type size = "default" | "small";
 
 export interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    inputSize: inputSize;
+    size: size;
 
     textLabel?: string;
 
