@@ -1,63 +1,31 @@
-import styled from "styled-components";
 import ProgressBar from "./components/Progress";
 import { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Typography from "./components/Typography/typography";
-import * as ProgressTypes from './components/Progress/types'
-
-
-const Main = styled.main`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-`;
-
-const DivProgress = styled.div`
-  width: 20%;
-`;
-
-const Container = styled.div`
-  width: 90vw;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px 50px;
-  gap: 50px;
-`;
-
-const BtnsDiv = styled.div`
-display: flex;
-gap: 12px;
-align-items: center;
-justify-content: center;
-`
-
-const BarsContainer = styled.div`
-display: flex;
-gap: 25px;
-align-items: center;
-width: 100%;
-justify-content:center ;
-`
+import * as ProgressTypes from "./components/Progress/types";
+import * as Styles from "./styles.ts";
+import SaveIcon from "./components/assets/save.svg";
+import ModalImg from "./components/assets/Modal Image.svg";
+import Modal from "./components/Modal/index.tsx";
+import Avatar from "./components/Avatar/index.tsx";
+import UserImg from "./components/assets/Avatar.svg";
 
 export default function App() {
   const [percent, setPercent] = useState(90);
 
   function aumentarPorcentagem() {
-    setPercent((percent) => percent += 1);
+    setPercent((percent) => (percent += 1));
   }
-  
+
   function diminuirPorcentagem() {
     if (percent > 100) {
       setPercent(99);
-    } 
-    setPercent((percent) => percent -= 1);
+    }
+    setPercent((percent) => (percent -= 1));
   }
 
-  const [progressStyle, setProgressStyle] = useState<ProgressTypes.StyleType>("percent");
+  const [progressStyle, setProgressStyle] =
+    useState<ProgressTypes.StyleType>("percent");
 
   useEffect(() => {
     if (percent >= 100) {
@@ -67,41 +35,131 @@ export default function App() {
     }
   }, [percent]);
 
+  function percentError() {
+    setProgressStyle("error");
+  }
 
-  function percentError () {
-    setProgressStyle("error")
-  } 
+  const [isVisible, setIsVisible] = useState(false);
+
+  function openModal() {
+    setIsVisible(true);
+  }
+
+  function closeModal() {
+    setIsVisible(false);
+  }
 
   return (
-    <Main>
-      <Container>
-      <Typography size="desktop" tag="H1">
-      Progress Bar Types
-      </Typography>
-    <BarsContainer>
-          <DivProgress>
+    <Styles.Main>
+      <Styles.Container>
+        <Typography size="desktop" tag="H1">
+          Button Types
+        </Typography>
+
+        <Styles.ButtonsContaienr>
+          <Styles.BtnColumns>
+            <Styles.DivBtns>
+              <Typography size="main" tag="body-M-regular">
+                Main
+              </Typography>
+              <Button variant="main" size="large">
+                Button
+              </Button>
+              <Button variant="main" size="medium" icon={SaveIcon}>
+                Icon
+              </Button>
+              <Button variant="main" size="small" disabled>
+                Disabled
+              </Button>
+            </Styles.DivBtns>
+          </Styles.BtnColumns>
+
+          <Styles.BtnColumns>
+            <Styles.DivBtns>
+              <Typography size="main" tag="body-M-regular">
+                Secondary
+              </Typography>
+              <Button variant="secondary" size="large">
+                Button
+              </Button>
+              <Button variant="secondary" size="medium" icon={SaveIcon}>
+                Icon
+              </Button>
+              <Button variant="secondary" size="small" disabled>
+                Disabled
+              </Button>
+            </Styles.DivBtns>
+          </Styles.BtnColumns>
+
+          <Styles.BtnColumns>
+            <Styles.DivBtns>
+              <Typography size="main" tag="body-M-regular">
+                Text
+              </Typography>
+              <Button variant="text" size="large">
+                Button
+              </Button>
+              <Button variant="text" size="large" disabled>
+                Disabled
+              </Button>
+              <Button variant="text" size="large" icon={SaveIcon}>
+                Icon
+              </Button>
+            </Styles.DivBtns>
+          </Styles.BtnColumns>
+
+          <Styles.BtnColumns>
+            <Styles.DivBtns>
+              <Typography size="main" tag="body-M-regular">
+                Link
+              </Typography>
+              <Button variant="link" size="large">
+                Button
+              </Button>
+              <Button variant="link" size="large" icon={SaveIcon}>
+                Icon
+              </Button>
+            </Styles.DivBtns>
+          </Styles.BtnColumns>
+        </Styles.ButtonsContaienr>
+      </Styles.Container>
+
+      <Styles.Container>
+        <Typography size="desktop" tag="H1">
+          Progress Bar Types
+        </Typography>
+        <Styles.BarsContainer>
+          <Styles.DivProgress>
             <ProgressBar percents={percent} style={progressStyle} type="line" />
-          </DivProgress> 
+          </Styles.DivProgress>
 
-          <DivProgress>
-            <ProgressBar percents={percent} style={progressStyle} type="smallLine" />
-          </DivProgress>
+          <Styles.DivProgress>
+            <ProgressBar
+              percents={percent}
+              style={progressStyle}
+              type="smallLine"
+            />
+          </Styles.DivProgress>
 
-          <DivProgress>
-            <ProgressBar percents={percent} style={progressStyle} type="circle" />
-          </DivProgress>
+          <Styles.DivProgress>
+            <ProgressBar
+              percents={percent}
+              style={progressStyle}
+              type="circle"
+            />
+          </Styles.DivProgress>
 
-          <DivProgress>
-            <ProgressBar percents={percent} style={progressStyle} type="smallCircle" />
-          </DivProgress>
-    </BarsContainer>
+          <Styles.DivProgress>
+            <ProgressBar
+              percents={percent}
+              style={progressStyle}
+              type="smallCircle"
+            />
+          </Styles.DivProgress>
+        </Styles.BarsContainer>
 
-        <BtnsDiv>
-        <Button
-            size="large"
-            variant="main"
-            onClick={aumentarPorcentagem}
-          >
+        <Styles.BtnsDiv>
+          <Button size="large" variant="main" onClick={aumentarPorcentagem}>
             <Typography size="main" tag="body-M-regular">
               Aumentar
             </Typography>
@@ -115,17 +173,96 @@ export default function App() {
               Diminuir
             </Typography>
           </Button>
-          <Button
-            size="large"
-            variant="secondary"
-            onClick={percentError}
-          >
+          <Button size="large" variant="secondary" onClick={percentError}>
             <Typography size="main" tag="body-M-regular">
               Error
             </Typography>
           </Button>
-        </BtnsDiv>
-      </Container>
-    </Main>
+        </Styles.BtnsDiv>
+      </Styles.Container>
+
+      <Styles.Container>
+        <Typography size="desktop" tag="H1">
+          Modal
+        </Typography>
+
+        <Button size="large" variant="main" onClick={openModal}>
+          <Typography size="main" tag="body-M-regular">
+            Abrir Modal
+          </Typography>
+        </Button>
+
+        <Modal
+          isVisible={isVisible}
+          onClose={closeModal}
+          img={ModalImg}
+          action={
+            <Button size="large" variant="secondary" onClick={closeModal}>
+              <Typography size="main" tag="body-M-regular">
+                Perfeito!
+              </Typography>
+            </Button>
+          }
+        >
+          <Typography size="desktop" tag="H1">
+            Modal Aberto!
+          </Typography>
+          <Typography size="main" tag="body-M">
+            Totalmente Customizavel
+          </Typography>
+        </Modal>
+      </Styles.Container>
+
+      <Styles.Container>
+        <Typography size="desktop" tag="H1">
+          Avatar
+        </Typography>
+
+        <Styles.DivAvatar>
+          <Avatar type="picture" color="default" img={UserImg} />
+        </Styles.DivAvatar>
+
+        <Styles.AvatarRow>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="default" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="purpleGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="lightPurpleGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="greenGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="orangeGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="default" color="pinkGradient" />
+          </Styles.DivAvatar>
+        </Styles.AvatarRow>
+        <Styles.AvatarRow>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="default" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="purpleGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="lightPurpleGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="greenGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="orangeGradient" />
+          </Styles.DivAvatar>
+          <Styles.DivAvatar>
+            <Avatar type="initials" initial="V8" color="pinkGradient" />
+          </Styles.DivAvatar>
+        </Styles.AvatarRow>
+      </Styles.Container>
+    </Styles.Main>
   );
 }
