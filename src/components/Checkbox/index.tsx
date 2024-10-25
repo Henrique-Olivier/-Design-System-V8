@@ -39,11 +39,11 @@ function UndefinedIcon() {
     );
 }
 
-function Checkbox({ type="default", error=false, ...props }: CheckboxProps){
+function Checkbox({ type="default", id, error=false, ...props }: CheckboxProps){
     return(
         <S.Container>
-            <S.InputElement $error={error} id="checkbox" type="checkbox" {...props}/>
-            <S.LabelElement htmlFor="checkbox">{type === "default" ? <CheckedIcon/> : <UndefinedIcon/>}</S.LabelElement>
+            <S.InputElement $error={error} id={id} type="checkbox" {...props}/>
+            <S.LabelElement htmlFor={id}>{type === "default" ? <CheckedIcon/> : <UndefinedIcon/>}</S.LabelElement>
         </S.Container>
     );
 }

@@ -1,5 +1,6 @@
 export type checkboxType = "default" | "undefined";
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    error?: boolean
+    id: string;
+    error?: boolean;
     type?: checkboxType;
 }
