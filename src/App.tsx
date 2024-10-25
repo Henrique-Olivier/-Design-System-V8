@@ -1,7 +1,7 @@
 import ProgressBar from "./components/Progress";
 import { useEffect, useState } from "react";
 import Button from "./components/Button";
-import Typography from "./components/Typography/typography";
+import Typography from "./components/Typography";
 import * as ProgressTypes from "./components/Progress/types";
 import * as Styles from "./styles.ts";
 import SaveIcon from "./components/assets/save.svg";
@@ -52,14 +52,14 @@ export default function App() {
   return (
     <Styles.Main>
       <Styles.Container>
-        <Typography size="desktop" tag="H1">
+        <Typography variant="H1">
           Button Types
         </Typography>
 
         <Styles.ButtonsContaienr>
           <Styles.BtnColumns>
             <Styles.DivBtns>
-              <Typography size="main" tag="body-M-regular">
+              <Typography variant="body-M-regular">
                 Main
               </Typography>
               <Button variant="main" size="large">
@@ -76,7 +76,7 @@ export default function App() {
 
           <Styles.BtnColumns>
             <Styles.DivBtns>
-              <Typography size="main" tag="body-M-regular">
+              <Typography variant="body-M-regular">
                 Secondary
               </Typography>
               <Button variant="secondary" size="large">
@@ -93,7 +93,7 @@ export default function App() {
 
           <Styles.BtnColumns>
             <Styles.DivBtns>
-              <Typography size="main" tag="body-M-regular">
+              <Typography variant="body-M-regular">
                 Text
               </Typography>
               <Button variant="text" size="large">
@@ -110,7 +110,7 @@ export default function App() {
 
           <Styles.BtnColumns>
             <Styles.DivBtns>
-              <Typography size="main" tag="body-M-regular">
+              <Typography variant="body-M-regular">
                 Link
               </Typography>
               <Button variant="link" size="large">
@@ -125,7 +125,7 @@ export default function App() {
       </Styles.Container>
 
       <Styles.Container>
-        <Typography size="desktop" tag="H1">
+        <Typography variant="H1">
           Progress Bar Types
         </Typography>
         <Styles.BarsContainer>
@@ -160,7 +160,7 @@ export default function App() {
 
         <Styles.BtnsDiv>
           <Button size="large" variant="main" onClick={aumentarPorcentagem}>
-            <Typography size="main" tag="body-M-regular">
+            <Typography variant="body-M-regular">
               Aumentar
             </Typography>
           </Button>
@@ -169,12 +169,12 @@ export default function App() {
             variant="secondary"
             onClick={diminuirPorcentagem}
           >
-            <Typography size="main" tag="body-M-regular">
+            <Typography variant="body-M-regular">
               Diminuir
             </Typography>
           </Button>
           <Button size="large" variant="secondary" onClick={percentError}>
-            <Typography size="main" tag="body-M-regular">
+            <Typography variant="body-M-regular">
               Error
             </Typography>
           </Button>
@@ -182,12 +182,12 @@ export default function App() {
       </Styles.Container>
 
       <Styles.Container>
-        <Typography size="desktop" tag="H1">
+        <Typography variant="H1">
           Modal
         </Typography>
 
         <Button size="large" variant="main" onClick={openModal}>
-          <Typography size="main" tag="body-M-regular">
+          <Typography variant="body-M-regular">
             Abrir Modal
           </Typography>
         </Button>
@@ -198,23 +198,23 @@ export default function App() {
           img={ModalImg}
           action={
             <Button size="large" variant="secondary" onClick={closeModal}>
-              <Typography size="main" tag="body-M-regular">
+              <Typography variant="body-M-regular">
                 Perfeito!
               </Typography>
             </Button>
           }
         >
-          <Typography size="desktop" tag="H1">
+          <Typography variant="H1">
             Modal Aberto!
           </Typography>
-          <Typography size="main" tag="body-M">
+          <Typography variant="body-M">
             Totalmente Customizavel
           </Typography>
         </Modal>
       </Styles.Container>
 
       <Styles.Container>
-        <Typography size="desktop" tag="H1">
+        <Typography variant="H1">
           Avatar
         </Typography>
 
