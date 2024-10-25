@@ -10,7 +10,7 @@ function showError(textError: string | undefined) {
     return textError ? <p>{textError}</p> : null;
 };
 
-function Input({ type, size, textLabel, textError, icon, disabled=false, ...props }: CustomInputProps){
+function Input({ type, height, textLabel, textError, icon, disabled=false, ...props }: CustomInputProps){
     const [isActive, setIsActive] = useState(false);
 
     return(
@@ -19,7 +19,7 @@ function Input({ type, size, textLabel, textError, icon, disabled=false, ...prop
             <div>
                 <S.InputComponent
                 type={type}
-                $size={size}
+                $size={height}
                 disabled={disabled}
                 onFocus={() => setIsActive(!isActive)}
                 onBlur={() => setIsActive(!isActive)}
