@@ -3,7 +3,6 @@ import icon from "./components/assets/Input_Icon.svg";
 import empty from "./components/assets/Empty.svg";
 import icon_button from "./components/assets/Icon button.svg";
 import Checkbox from "./components/Checkbox";
-import * as S from "./style";
 import Typography from "./components/Typography";
 import Empty from "./components/Empty";
 import Button from "./components/Button";
@@ -65,7 +64,7 @@ export default function App() {
 
       <Styles.Container>
         <Typography variant="H1">
-          Button Types
+          Button Component
         </Typography>
 
         <Styles.ButtonsContaienr>
@@ -138,7 +137,7 @@ export default function App() {
 
       <Styles.Container>
         <Typography variant="H1">
-          Progress Bar Types
+          Progress Bar Component
         </Typography>
         <Styles.BarsContainer>
           <Styles.DivProgress>
@@ -195,7 +194,7 @@ export default function App() {
 
       <Styles.Container>
         <Typography variant="H1">
-          Modal
+          Modal Component
         </Typography>
 
         <Button size="large" variant="main" onClick={openModal}>
@@ -227,7 +226,7 @@ export default function App() {
 
       <Styles.Container>
         <Typography variant="H1">
-          Avatar
+          Avatar Component
         </Typography>
 
         <Styles.DivAvatar>
@@ -277,7 +276,7 @@ export default function App() {
       </Styles.Container>
       
       
-       <S.WrapperInput>
+       <Styles.WrapperInput>
         <h2>Input Component</h2>
         <div>
           <Input height="default" placeholder="Text" icon={icon} />
@@ -294,9 +293,9 @@ export default function App() {
           <Input height="small" placeholder="Text" textLabel="Text" />
           <Input height="small" placeholder="Text" textError="Error" />
         </div>
-      </S.WrapperInput>
+      </Styles.WrapperInput>
 
-      <S.WrapperCheckbox>
+      <Styles.WrapperCheckbox>
         <h2>Checkbox Component</h2>
         <div>
           <Checkbox id="testando01" />
@@ -311,9 +310,9 @@ export default function App() {
           <Checkbox type="undefined" id="testando07" defaultChecked disabled />
           <Checkbox type="undefined" id="testando08" defaultChecked error />
         </div>
-      </S.WrapperCheckbox>
+      </Styles.WrapperCheckbox>
 
-      <S.WrapperTypography>
+      <Styles.WrapperTypography>
         <h1>Typography Component</h1>
         <Typography variant="H1">
           Heading 1
@@ -354,9 +353,9 @@ export default function App() {
         <Typography variant="body-XS">
           Body-XS
         </Typography>
-      </S.WrapperTypography>
+      </Styles.WrapperTypography>
 
-      <S.WrapperEmpty>
+      <Styles.WrapperEmpty>
         <h2>Empty Component</h2>
         <Empty icon={empty}></Empty>
         <Empty icon={empty} text="Nothing Here!"></Empty>
@@ -365,7 +364,7 @@ export default function App() {
             Create
           </Button>
         </Empty>
-      </S.WrapperEmpty>
+      </Styles.WrapperEmpty>
     </Styles.Main>
   );
 }
