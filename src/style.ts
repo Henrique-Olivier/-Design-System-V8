@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const WrapperInput = styled.div`
+  width: 90vw;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,6 +21,8 @@ export const WrapperInput = styled.div`
 `;
 
 export const WrapperCheckbox = styled.div`
+  width: 90vw;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,6 +40,8 @@ export const WrapperCheckbox = styled.div`
 `;
 
 export const WrapperTypography = styled.div`
+  width: 90vw;
+  border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,6 +54,8 @@ export const WrapperTypography = styled.div`
 `;
 
 export const WrapperEmpty = styled.div`
+  width: 90vw;
+  border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;

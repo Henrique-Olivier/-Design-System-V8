@@ -9,8 +9,6 @@ import Empty from "./components/Empty";
 import Button from "./components/Button";
 import ProgressBar from "./components/Progress";
 import { useEffect, useState } from "react";
-import Button from "./components/Button";
-import Typography from "./components/Typography";
 import * as ProgressTypes from "./components/Progress/types";
 import * as Styles from "./styles.ts";
 import SaveIcon from "./components/assets/save.svg";
@@ -61,6 +59,10 @@ export default function App() {
 
   return (
     <Styles.Main>
+      <Typography variant="H1">
+      Design System
+      </Typography>
+
       <Styles.Container>
         <Typography variant="H1">
           Button Types
@@ -109,11 +111,11 @@ export default function App() {
               <Button variant="text" size="large">
                 Button
               </Button>
-              <Button variant="text" size="large" disabled>
-                Disabled
-              </Button>
               <Button variant="text" size="large" icon={SaveIcon}>
                 Icon
+              </Button>
+              <Button variant="text" size="large" disabled>
+                Disabled
               </Button>
             </Styles.DivBtns>
           </Styles.BtnColumns>
