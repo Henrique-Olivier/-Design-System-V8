@@ -1,43 +1,19 @@
-import styled from "styled-components";
 import Input from "./components/Input";
 import icon from "./components/assets/Input_Icon.svg";
+import empty from "./components/assets/Empty.svg";
+import icon_button from "./components/assets/Icon button.svg";
 import Checkbox from "./components/Checkbox";
+import * as S from "./style";
+import Typography from "./components/Typography";
+import Empty from "./components/Empty";
+import Button from "./components/Button";
 
-const WrapperInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-family: "Poppins", sans-serif;
-
-  >div{
-    display: flex;
-    align-items: flex-end;
-    gap: 20px;
-  }
-`;
-
-const WrapperCheckbox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 80px;
-
-  >div{
-    display: flex;
-    align-items: flex-end;
-    gap: 20px;
-  }
-`;
 
 export default function App () {
 
   return (
     <>
-      <WrapperInput>
+      <S.WrapperInput>
         <h2>Input Component</h2>
         <div>
           <Input height="default" placeholder="Text" icon={icon} />
@@ -54,9 +30,9 @@ export default function App () {
           <Input height="small" placeholder="Text" textLabel="Text" />
           <Input height="small" placeholder="Text" textError="Error" />
         </div>
-      </WrapperInput>
+      </S.WrapperInput>
 
-      <WrapperCheckbox>
+      <S.WrapperCheckbox>
         <h2>Checkbox Component</h2>
         <div>
           <Checkbox id="testando01" />
@@ -71,7 +47,62 @@ export default function App () {
           <Checkbox type="undefined" id="testando07" defaultChecked disabled />
           <Checkbox type="undefined" id="testando08" defaultChecked error />
         </div>
-      </WrapperCheckbox>
+      </S.WrapperCheckbox>
+
+      <S.WrapperTypography>
+        <h1>Typography Component</h1>
+        <Typography variant="H1">
+          Heading 1
+        </Typography>
+
+        <Typography variant="H2">
+          Heading 2
+        </Typography>
+
+        <Typography variant="H3">
+          Heading 3
+        </Typography>
+
+        <Typography variant="H4">
+          Heading 4
+        </Typography>
+
+        <Typography variant="body-L">
+          Body-L
+        </Typography>
+
+        <Typography variant="body-M">
+          Body-M
+        </Typography>
+
+        <Typography variant="body-M-regular">
+          Body-M-regular
+        </Typography>
+
+        <Typography variant="body-S">
+          Body-S
+        </Typography>
+
+        <Typography variant="body-S-regular">
+          Body-S-regular
+        </Typography>
+
+        <Typography variant="body-XS">
+          Body-XS
+        </Typography>
+      </S.WrapperTypography>
+
+      <S.WrapperEmpty>
+        <h2>Empty Component</h2>
+        <Empty icon={empty}></Empty>
+        <Empty icon={empty} text="Nothing Here!"></Empty>
+        <Empty icon={empty} text="Nothing Here!">
+          <Button size="medium" variant="main" icon={icon_button}>
+            Create
+          </Button>
+        </Empty>
+      </S.WrapperEmpty>
+
     </>
   )
   }
