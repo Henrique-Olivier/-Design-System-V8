@@ -19,13 +19,12 @@ const DivProgress = styled.div`
 
 const Container = styled.div`
   width: 90vw;
-  height: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
   border-radius: 8px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 20px 50px;
   gap: 50px;
 `;
 
@@ -76,12 +75,10 @@ export default function App() {
   return (
     <Main>
       <Container>
-
+      <Typography size="desktop" tag="H1">
+      Progress Bar Types
+      </Typography>
     <BarsContainer>
-          <DivProgress>
-            <ProgressBar percents={percent} style={"default"} type="line" />
-          </DivProgress>
-
           <DivProgress>
             <ProgressBar percents={percent} style={progressStyle} type="line" />
           </DivProgress> 
